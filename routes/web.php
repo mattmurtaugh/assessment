@@ -1,6 +1,12 @@
 <?php
 
+use App\Exports\JournalExport;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\StoreController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Run app as user
+auth()->loginUsingId(1);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/sample', 'sample');
+Route::middleware(['auth'])->group(function () {
+    Route::get('stores', [StoreController::class, 'index'])->name('stores.index');
+    Route::get('journal', JournalController::class)->name('journals.index');
+});
