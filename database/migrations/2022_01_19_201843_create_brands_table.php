@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
 
             $table->string('name');
             $table->string('color');
-            
+
             $table->timestamps();
         });
     }

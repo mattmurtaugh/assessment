@@ -17,7 +17,8 @@ class CreateStoresTable extends Migration
             $table->id();
 
             $table->unsignedBigInteger('brand_id');
-            $table->unsignedBigInteger('number');
+            $table->foreignId('user_id');
+            $table->unsignedBigInteger('number')->unique();
             $table->string('address');
             $table->string('city');
             $table->string('state');

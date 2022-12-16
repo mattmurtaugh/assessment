@@ -20,7 +20,9 @@ class CreateJournalsTable extends Migration
             $table->date('date');
             $table->unsignedBigInteger('revenue');
             $table->unsignedBigInteger('food_cost');
+            $table->unsignedBigInteger('food_cost_percent');
             $table->unsignedBigInteger('labor_cost');
+            $table->unsignedBigInteger('labor_cost_percent');
             $table->unsignedBigInteger('profit');
 
             $table->timestamps();
