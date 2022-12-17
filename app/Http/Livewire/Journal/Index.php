@@ -37,7 +37,12 @@ class Index extends Component
 
     public function updatedBrandId($value)
     {
-        $this->brand = Brand::whereId($value)->firstOrFail();
+
+        if ($value != '') {
+            $this->brand = Brand::whereId($value)->firstOrFail();
+        } else {
+            $this->brand = null;
+        }
 
         $this->store = null;
         $this->store_id = 'all';
@@ -54,7 +59,7 @@ class Index extends Component
 
     public function exportData()
     {
-        SendExportJob::dispatch($this->brand, $this->store);
+        SendExportJob::dispatch($this->brand, $this->store, auth()->user());
 
         session()->flash('flash.banner', 'Your export is processing in the background. You will be emailed a link when it is complete.');
     }

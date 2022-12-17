@@ -58,6 +58,12 @@ class JournalExport implements FromQuery, WithHeadings, WithMapping
         return $this;
     }
 
+    public function forUser($user)
+    {
+        auth()->setUser($user);
+        return $this;
+    }
+
     public function query()
     {
         return Journal::query()

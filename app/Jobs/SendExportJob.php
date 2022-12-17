@@ -21,19 +21,21 @@ class SendExportJob implements ShouldQueue
 
     protected $brand;
     protected $store;
+    protected $user;
 
-    public function __construct($brand, $store)
+    public function __construct($brand, $store, $user)
     {
         $this->brand = $brand;
         $this->store = $store;
+        $this->user = $user;
     }
 
     public function handle()
     {
         $filename = "export-" . Str::random(20) . ".csv";
 
-        Excel::store((new JournalExport())->forStore($this->store)->forBrand($this->brand), $filename);
+        Excel::store((new JournalExport())->forUser($this->user)->forStore($this->store)->forBrand($this->brand), $filename);
 
-        Mail::to(Auth::user()->email)->queue(new ExportComplete(Storage::url($filename)));
+        Mail::to($this->user->email)->queue(new ExportComplete(Storage::url($filename)));
     }
 }

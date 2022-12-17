@@ -6,7 +6,7 @@
 
         <x-slot name="actions">
             <select wire:model="brand_id" class="block p-3 mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:border-red-300 focus:ring focus:ring-red-200 focus:ring-opacity-50 w-40">
-                <option>Select brand</option>
+                <option value="">Select brand</option>
                 @foreach($availableBrands as $singleBrand)
                     <option value="{{ $singleBrand->id }}">{{ $singleBrand->name }}</option>
                 @endforeach
