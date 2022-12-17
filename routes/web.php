@@ -30,3 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('stores', [StoreController::class, 'index'])->name('stores.index');
     Route::get('journal', JournalController::class)->name('journals.index');
 });
+
+Route::get('login', function() {
+    auth()->loginUsingId(1);
+
+    return redirect()->route('stores.index');
+})->name('login');
