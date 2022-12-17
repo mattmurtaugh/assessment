@@ -7,7 +7,4 @@ First run:
 php artisan db:seed
 ```
 
-Once that is complete, run the seeding for the Journal
-```
-php artisan db:seed --class=JournalSeeder
-```
+This is a modification of the original instructions.

@@ -11,9 +11,7 @@ class JournalSeeder extends Seeder
 {
     public function run()
     {
-        $stores = Store::all();
-
-        ray($stores);
+        $stores = Store::withoutGlobalScopes()->get();
 
         foreach($stores as $store) {
             $date = now();
