@@ -19,9 +19,6 @@ use Maatwebsite\Excel\Facades\Excel;
 |
 */
 
-// Run app as user
-auth()->loginUsingId(1);
-
 Route::get('/', function () {
     return view('welcome');
 });
