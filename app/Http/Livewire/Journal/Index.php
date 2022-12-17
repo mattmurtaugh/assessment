@@ -30,7 +30,8 @@ class Index extends Component
         if (isset($_GET['openStore'])) {
             $this->store = Store::whereNumber($_GET['openStore'])->firstOrFail();
             $this->store_id = $this->store->number;
-            $this->brand  = $this->store->brand->id;
+            $this->brand  = $this->store->brand;
+            $this->brand_id  = $this->store->brand->id;
         }
     }
 
